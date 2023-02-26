@@ -1,3 +1,6 @@
+require('dotenv').config();
+const { CREATOR_ADDRESS } = process.env;
+
 const CampaignFactory = artifacts.require("CampaignFactory");
 const Campaign = artifacts.require("Campaign");
 
@@ -6,5 +9,6 @@ module.exports = async function (deployer) {
   await deployer.deploy(CampaignFactory);
   const campaignFactory = await CampaignFactory.deployed();
   minimum = 100;
-  await deployer.deploy(Campaign, minimum, campaignFactory.address);
+
+  await deployer.deploy(Campaign, minimum, CREATOR_ADDRESS);
 };

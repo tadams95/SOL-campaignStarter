@@ -249,11 +249,11 @@
 	},
 	"sources": {
 		"contracts/Campaign.sol": {
-			"keccak256": "0x73bd6fde2f9c638bf24b80ab9c6b6ee3622106e6f882f299dae9b74537d71966",
+			"keccak256": "0x090e8807e757a079f493d9bf9dacebc3ffd9986d1924f3a059ab57edbfed07b2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://555fad3cd2c3f198e24123f20559f4e8933f4e9ebb85a99718918f735497ea17",
-				"dweb:/ipfs/QmVTfFBVLx15PnoJ7qqaqNCumP6rzpuKx1KDytRE8DgqJF"
+				"bzz-raw://0da026ffc60f6cbf79362d7a197fa0325ed4551373013c3a631bb13fa275b4ee",
+				"dweb:/ipfs/QmetCYrTcCmT8U1tUw6qhVLEcx2yzfA9doCgVYcRGC15Lw"
 			]
 		}
 	},
