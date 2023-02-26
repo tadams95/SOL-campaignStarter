@@ -124,3 +124,31 @@ contract Campaign {
         return requests.length;
     }
 }
+
+//   Deploying 'CampaignFactory'
+//    ---------------------------
+//    > transaction hash:    0x903598cc6331b9ecf81a7b23a45acaf772366df11617a5a50bffebc16269cd5b
+//    > Blocks: 0            Seconds: 8
+//    > contract address:    0x8fF3C8eA56F7874BBc3A9E25342BE13D5c691ECB
+//    > block number:        8559483
+//    > block timestamp:     1677406908
+//    > account:             0x8f5681528c217F21e51E3Ee90a89e7D04E07D33d
+//    > balance:             0.562471935146184835
+//    > gas used:            1301807 (0x13dd2f)
+//    > gas price:           2.500099938 gwei
+//    > value sent:          0 ETH
+//    > total cost:          0.003254647599987966 ETH
+
+//   Deploying 'Campaign'
+//    --------------------
+//    > transaction hash:    0xc95caa063461f8900fed9a8db52f9b6be659e6eb10fb1995fc458b39352300ab
+//    > Blocks: 1            Seconds: 8
+//    > contract address:    0xea7F508Ab4e3B73b75978906843636a1E1484f3c
+//    > block number:        8559486
+//    > block timestamp:     1677406944
+//    > account:             0x8f5681528c217F21e51E3Ee90a89e7D04E07D33d
+//    > balance:             0.559901229862825839
+//    > gas used:            1028233 (0xfb089)
+//    > gas price:           2.500119412 gwei
+//    > value sent:          0 ETH
+//    > total cost:          0.002570705283358996 ETH
