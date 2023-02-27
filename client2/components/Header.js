@@ -7,7 +7,7 @@ import { Menu } from "semantic-ui-react";
 const Header = (props) => {
   return (
     <div>
-      <Menu>
+      <Menu style={{marginTop: "10px"}}>
         <Menu.Item
           name="CrowdStarter"
           //   active={activeItem === "browse"}
