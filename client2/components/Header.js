@@ -1,34 +1,24 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
-
+import { Link } from "../routes";
 
 // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
 const Header = (props) => {
   return (
     <div>
-      <Menu style={{marginTop: "10px"}}>
-        <Menu.Item
-          name="CrowdStarter"
-          //   active={activeItem === "browse"}
-          //   onClick={this.handleItemClick}
-        />
-         <Menu.Menu position='right'>
-          <Menu.Item
-            name='Campaigns'
-            // active={activeItem === 'signup'}
-            // onClick={this.handleItemClick}
-          >
-            Campaigns
-          </Menu.Item>
+      <Menu style={{ marginTop: "10px" }}>
+        <Link legacyBehavior route="/">
+          <a className="item">CrowdStarter</a>
+        </Link>
+        <Menu.Menu position="right">
+          <Link legacyBehavior route="/">
+            <a className="item">Campaigns</a>
+          </Link>
 
-          <Menu.Item
-            name='add'
-            // active={activeItem === 'help'}
-            // onClick={this.handleItemClick}
-          >
-            +
-          </Menu.Item>
+          <Link legacyBehavior route="/campaigns/new">
+            <a className="item">+</a>
+          </Link>
         </Menu.Menu>
       </Menu>
       {props.children}
