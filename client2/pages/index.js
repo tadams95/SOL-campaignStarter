@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import factory from "../web3/factory";
-// import styles from "@/styles/Home.module.css";
 import { Button, Card } from "semantic-ui-react";
 import Layout from "../components/Layout";
+import { Link } from "../routes";
 
 class CampaignIndex extends Component {
   static async getInitialProps() {
@@ -15,7 +15,11 @@ class CampaignIndex extends Component {
     const items = this.props.campaigns.map((address) => {
       return {
         header: address,
-        description: <a>View Campaign</a>,
+        description: (
+          <Link legacyBehavior route={`/campaigns/${address}`}>
+            <a>View Campaign</a>
+          </Link>
+        ),
         fluid: true,
       };
     });
@@ -28,18 +32,20 @@ class CampaignIndex extends Component {
       <Layout>
         <>
           <h3>Open Campaigns</h3>
-
-          <Button
-            floated="right"
-            content="Create Campaign"
-            icon="add square"
-            primary={true}
-          />
-          <div>{this.renderCampaigns()}</div>
+          <Link legacyBehavior route="/campaigns/new">
+            <a>
+              <Button
+                floated="right"
+                content="Create Campaign"
+                icon="add square"
+                primary={true}
+              />
+            </a>
+          </Link>
+          {this.renderCampaigns()}
         </>
       </Layout>
     );
-   
   }
 }
 export default CampaignIndex;
