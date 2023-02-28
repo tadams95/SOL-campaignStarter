@@ -3,6 +3,7 @@ import { Button, Table } from "semantic-ui-react";
 import { Link } from "../../../routes";
 import Layout from "../../../components/Layout";
 import Campaign from "../../../web3/campaign";
+import RequestRow from "../../../components/RequestRow";
 
 class RequestIndex extends Component {
   static async getInitialProps(props) {
@@ -10,7 +11,7 @@ class RequestIndex extends Component {
     const campaign = Campaign(address);
 
     const requestCount = await campaign.methods.getRequestsCount().call();
-
+    const approversCount = await campaign.methods.approversCount().call();
     const requests = await Promise.all(
       Array(parseInt(requestCount))
         .fill()
@@ -18,7 +19,22 @@ class RequestIndex extends Component {
           return campaign.methods.requests(index).call();
         })
     );
-    return { address, requests, requestCount };
+    return { address, requests, requestCount, approversCount };
+  }
+
+  //iterate over list of requests
+  renderRows() {
+    return this.props.requests.map((request, index) => {
+      return (
+        <RequestRow
+          key={index}
+          id={index}
+          request={request}
+          address={this.props.address}
+          approversCount={this.props.approversCount}
+        />
+      );
+    });
   }
 
   render() {
@@ -35,7 +51,7 @@ class RequestIndex extends Component {
             <Button primary>Add Request</Button>
           </a>
         </Link>
-    
+
         <Table>
           <Header>
             <Row>
@@ -48,7 +64,7 @@ class RequestIndex extends Component {
               <HeaderCell>Finalize</HeaderCell>
             </Row>
           </Header>
-          {/* <Body>{this.renderRows()}</Body> */}
+          <Body>{this.renderRows()}</Body>
         </Table>
       </Layout>
     );
