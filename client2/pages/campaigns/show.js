@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import Layout from "../../components/Layout";
 import Campaign from "../../web3/campaign";
-import { Card, Grid } from "semantic-ui-react";
+import { Card, Grid, Button } from "semantic-ui-react";
 import web3 from "../../web3/web3";
 import ContributeForm from "../../components/ContributeForm";
+import { Link } from "../../routes";
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
@@ -65,7 +66,7 @@ class CampaignShow extends Component {
       },
     ];
 
-console.log(typeof approversCount);
+    console.log(typeof approversCount);
     return <Card.Group items={items} />;
   }
 
@@ -74,7 +75,17 @@ console.log(typeof approversCount);
       <Layout>
         <h3>Campaign Show</h3>
         <Grid>
-          <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
+          <Grid.Column width={10}>
+            {this.renderCards()}
+            <Link
+              legacyBehavior
+              route={`/campaigns/${this.props.address}/requests`}
+            >
+              <a>
+                <Button primary>View Requests</Button>
+              </a>
+            </Link>
+          </Grid.Column>
           <Grid.Column widescreen={6}>
             <ContributeForm address={this.props.address} />
           </Grid.Column>
