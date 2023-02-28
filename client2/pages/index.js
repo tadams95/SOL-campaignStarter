@@ -14,17 +14,19 @@ class CampaignIndex extends Component {
   renderCampaigns() {
     const items = this.props.campaigns.map((address) => {
       return {
+        style: { overflowWrap: "break-word" },
         header: address,
         description: (
-          <Link legacyBehavior route={`/campaigns/${address}`}>
+          <Link legacyBehavior route={`/campaigns/${address}`} >
             <a>View Campaign</a>
           </Link>
+          
         ),
         fluid: true,
       };
     });
 
-    return <Card.Group items={items} />;
+    return <Card.Group  items={items} />;
   }
 
   render() {
