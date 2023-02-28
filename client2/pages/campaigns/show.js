@@ -16,7 +16,7 @@ class CampaignShow extends Component {
       minimumContribution: summary[0],
       balance: summary[1],
       requestsCount: summary[2],
-      approversCount: summary[4],
+      approversCount: summary[3],
       manager: summary[4],
     };
   }
@@ -65,6 +65,7 @@ class CampaignShow extends Component {
       },
     ];
 
+console.log(typeof approversCount);
     return <Card.Group items={items} />;
   }
 
