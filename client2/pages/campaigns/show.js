@@ -3,6 +3,7 @@ import Layout from "../../components/Layout";
 import Campaign from "../../web3/campaign";
 import { Card } from "semantic-ui-react";
 import web3 from "../../web3/web3";
+import ContributeForm from "../../components/ContributeForm";
 
 class CampaignShow extends Component {
   static async getInitialProps(props) {
@@ -53,7 +54,7 @@ class CampaignShow extends Component {
         meta: "Number of Approvers",
         description:
           "Number of people who have already donated to this campaign",
-          style: { overflowWrap: "break-word" }
+        style: { overflowWrap: "break-word" },
       },
       {
         header: web3.utils.fromWei(balance, "ether"),
@@ -71,6 +72,7 @@ class CampaignShow extends Component {
       <Layout>
         <h3>Campaign Show</h3>
         {this.renderCards()}
+        <ContributeForm />
       </Layout>
     );
   }
