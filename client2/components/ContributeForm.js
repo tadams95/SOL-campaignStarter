@@ -2,53 +2,53 @@ import React, { Component } from "react";
 import { Form, Button, Input, Message } from "semantic-ui-react";
 import Campaign from "../web3/campaign";
 import web3 from "../web3/web3";
-import { Router } from "../routes";
+import { useRouter } from "next/router";
 
-class ContributeForm extends Component {
-  state = {
-    value: "",
-    errorMessage: "",
-    loading: false,
-  };
+function ContributeForm(props) {
+  const router = useRouter();
 
-  onSubmit = async (event) => {
+  const [value, setValue] = React.useState("");
+  const [errorMessage, setErrorMessage] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
+  const onSubmit = async (event) => {
     event.preventDefault();
-    const campaign = Campaign(this.props.address);
-    this.setState({ loading: true, errorMessage: "" });
+    const campaign = Campaign(props.address);
+    setLoading(true);
+    setErrorMessage("");
 
     try {
       const accounts = await web3.eth.getAccounts();
       await campaign.methods.contribute().send({
         from: accounts[0],
-        value: web3.utils.toWei(this.state.value, "ether"),
+        value: web3.utils.toWei(value, "ether"),
       });
 
-      Router.replaceRoute(`/campaigns/${this.props.address}`);
+      router.push(`/campaigns/${props.address}`);
     } catch (err) {
-      this.setState({ errorMessage: err.message });
+      setErrorMessage(err.message);
     }
-    this.setState({ loading: false, value: "" });
+    setLoading(false);
+    setValue("");
   };
 
-  render() {
-    return (
-      <Form onSubmit={this.onSubmit} error={!!this.state.errorMessage}>
-        <Form.Field>
-          <label>Amount to Contribute</label>
-          <Input
-            value={this.state.value}
-            onChange={(event) => this.setState({ value: event.target.value })}
-            label="ether"
-            labelPosition="right"
-          />
-        </Form.Field>
-        <Message error header="Uh-Oh!" content={this.state.errorMessage} />
-        <Button primary loading={this.state.loading}>
-          Contribute to the cause!
-        </Button>
-      </Form>
-    );
-  }
+  return (
+    <Form onSubmit={onSubmit} error={!!errorMessage}>
+      <Form.Field>
+        <label>Amount to Contribute</label>
+        <Input
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+          label="ether"
+          labelPosition="right"
+        />
+      </Form.Field>
+      <Message error header="Uh-Oh!" content={errorMessage} />
+      <Button primary loading={loading}>
+        Contribute to the cause!
+      </Button>
+    </Form>
+  );
 }
 
 export default ContributeForm;

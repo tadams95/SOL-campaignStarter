@@ -1,24 +1,24 @@
 import React from "react";
 import { Menu } from "semantic-ui-react";
-import { Link } from "../routes";
-
-// handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+import { useRouter } from "next/router";
 
 const Header = (props) => {
+  const router = useRouter();
+
   return (
     <div>
       <Menu style={{ marginTop: "10px" }}>
-        <Link legacyBehavior route="/">
-          <a className="item">CrowdStarter</a>
-        </Link>
+        <a className="item" onClick={() => router.push("/")}>
+          CrowdStarter
+        </a>
         <Menu.Menu position="right">
-          <Link legacyBehavior route="/">
-            <a className="item">Campaigns</a>
-          </Link>
+          <a className="item" onClick={() => router.push("/")}>
+            Campaigns
+          </a>
 
-          <Link legacyBehavior route="/campaigns/new">
-            <a className="item">+</a>
-          </Link>
+          <a className="item" onClick={() => router.push("/campaigns/new")}>
+            +
+          </a>
         </Menu.Menu>
       </Menu>
       {props.children}
